@@ -9,11 +9,11 @@
 <form method="post" action="?/signInEmail" use:enhance>
 	<label>
 		Email
-		<input type="email" name="email" />
+		<input type="email" name="email" required />
 	</label>
 	<label>
 		Password
-		<input type="password" name="password" />
+		<input type="password" name="password" required />
 	</label>
 	<button>Login</button>
 	<button formaction="?/register">Register</button>
