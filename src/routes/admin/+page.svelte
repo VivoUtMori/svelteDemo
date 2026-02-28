@@ -32,6 +32,10 @@
 				<p><strong>Created:</strong> {formatDate(post.createdAt)}</p>
 				<p><strong>Author:</strong> {post.authorName}</p>
 				<p>{post.content}</p>
+				<form method="POST" action="?/delete">
+					<input type="hidden" name="id" value={post.id} />
+					<button>Delete</button>
+				</form>
 			</li>
 		{/each}
 	</ul>

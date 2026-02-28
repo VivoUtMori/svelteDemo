@@ -50,6 +50,22 @@ export const actions: Actions = {
 
 		return redirect(303, '/admin');
 	},
+	delete: async (event) => {
+		if (!event.locals.user) {
+			return redirect(302, '/auth/login');
+		}
+		const formData = await event.request.formData();
+		const id = (formData.get('id')?.toString() ?? '').trim();
+		if (!id) {
+			return fail(400, { message: 'Missing post ID' });
+		}
+		try {
+			await db.delete(blogPost).where(eq(blogPost.id, id));
+		} catch (error) {
+			return fail(400, { message: (error as any)?.cause?.detail || 'Unable to delete post' });
+		}
+		return redirect(303, '/admin');
+	},
 };
 
 function makeSlug(title: string) {
