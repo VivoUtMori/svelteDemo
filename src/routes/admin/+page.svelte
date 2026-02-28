@@ -4,13 +4,23 @@
 
 	let { data }: PageProps = $props();
 
+	function resetFormOnSuccesfulCreation() {
+		return async ({ formElement, result }: { formElement: HTMLFormElement; result: any }) => {
+			if (result?.type === 'success') {
+				formElement.reset();
+			} else if (result instanceof Response && result.ok) {
+				formElement.reset();
+			}
+		};
+	}
+
 	const formatDate = (date: Date) => {
 		return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
 	};
 </script>
 
 <h1>Blog Posts</h1>
-<form method="post" action="?/create" use:enhance>
+<form method="post" action="?/create" use:enhance={resetFormOnSuccesfulCreation}>
 	<label>
 		Title
 		<input name="title" required />
