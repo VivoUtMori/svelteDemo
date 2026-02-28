@@ -44,6 +44,7 @@
 	},
 	"dependencies": {
 		"@drop-in/graffiti": "^4.15.1",
-		"postgres": "^3.4.8"
+		"postgres": "^3.4.8",
+		"valibot": "^1.2.0"
 	}
 }
