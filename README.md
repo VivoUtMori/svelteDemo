@@ -2,25 +2,27 @@
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --add prettier eslint devtools-json drizzle="database:postgresql+postgresql:postgres.js+docker:yes" better-auth="demo:password" --install npm svelteDemo
-```
-
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Start docker and boot up the database:
+
+```sh
+npm run db:start
+```
+
+You can check your DB with:
+
+```sh
+npm run db:studio
+```
+
+Make sure all dependencies are installed with:
+
+```sh
+npm install
+```
+
+Start a development server:
 
 ```sh
 npm run dev
