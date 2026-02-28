@@ -1,6 +1,6 @@
-# sv
+# svelteDemo
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A short demo of a svelte app with auth and all crud operations.
 
 ## Tech Stack
 
@@ -18,7 +18,7 @@ Start docker and boot up the database:
 npm run db:start
 ```
 
-You can check your DB with:
+Check your DB with:
 
 ```sh
 npm run db:studio
@@ -41,12 +41,8 @@ npm run dev -- --open
 
 ## Building
 
-To create a production version of your app:
+Create a production version of the app:
 
 ```sh
 npm run build
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
