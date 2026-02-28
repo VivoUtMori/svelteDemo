@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
+	import { enhance } from '$app/forms';
 
 	let { data }: PageProps = $props();
 
@@ -9,6 +10,17 @@
 </script>
 
 <h1>Blog Posts</h1>
+<form method="post" action="?/create" use:enhance>
+	<label>
+		Title
+		<input name="title" required />
+	</label>
+	<label>
+		Content
+		<textarea name="content" rows="6" required></textarea>
+	</label>
+	<button>Create Post</button>
+</form>
 
 {#if data.blogPosts.length === 0}
 	<p>No blog posts found.</p>
