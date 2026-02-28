@@ -1,2 +1,5 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<h1>Welcome to SvelteDemo</h1>
+<ul>
+	<li>Go to <a href="/admin">Admin Page</a></li>
+	<li>Go to <a href="/auth">Auth Page</a></li>
+</ul>
