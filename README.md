@@ -2,6 +2,14 @@
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
+## Tech Stack
+
+- **Framework:** [Svelte 5](https://svelte.dev/)
+- **Meta-Framework:** [SvelteKit](https://kit.svelte.dev/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Runtime:** [Node.js](https://nodejs.org/)
+- **Language:** TypeScript
+
 ## Developing
 
 Start docker and boot up the database:

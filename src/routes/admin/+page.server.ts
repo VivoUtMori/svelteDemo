@@ -66,6 +66,28 @@ export const actions: Actions = {
 		}
 		return redirect(303, '/admin');
 	},
+	update: async (event) => {
+		if (!event.locals.user) {
+			return redirect(302, '/auth/login');
+		}
+		const formData = await event.request.formData();
+		const id = (formData.get('id')?.toString() ?? '').trim();
+		const title = (formData.get('title')?.toString() ?? '').trim();
+		const content = (formData.get('content')?.toString() ?? '').trim();
+		if (!id || !title || !content) {
+			return fail(400, { message: 'Missing required fields' });
+		}
+		try {
+			await db.update(blogPost).set({
+				title,
+				content,
+				updatedAt: new Date(),
+			}).where(eq(blogPost.id, id));
+		} catch (error) {
+			return fail(400, { message: (error as any)?.cause?.detail || 'Unable to update post' });
+		}
+		return redirect(303, '/admin');
+	},
 };
 
 function makeSlug(title: string) {
