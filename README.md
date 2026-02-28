@@ -8,7 +8,10 @@ A short demo of a svelte app with auth and all crud operations.
 - **Meta-Framework:** [SvelteKit](https://kit.svelte.dev/)
 - **Build Tool:** [Vite](https://vitejs.dev/)
 - **Runtime:** [Node.js](https://nodejs.org/)
-- **Language:** TypeScript
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Auth:** [BetterAuth](https://www.better-auth.com/)
+- **Database:** [Postgres in Docker](https://hub.docker.com/_/postgres)
+- **ORM:** [Drizzle](https://orm.drizzle.team/)
 
 ## Developing
 
