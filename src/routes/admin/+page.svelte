@@ -1,18 +1,7 @@
 <script lang="ts">
-	import type { PageProps } from './$types';
-	import { enhance } from '$app/forms';
+	import type { ActionData, PageData } from './$types';
 
-	let { data }: PageProps = $props();
-
-	function resetFormOnSuccesfulCreation() {
-		return async ({ formElement, result }: { formElement: HTMLFormElement; result: any }) => {
-			if (result?.type === 'success') {
-				formElement.reset();
-			} else if (result instanceof Response && result.ok) {
-				formElement.reset();
-			}
-		};
-	}
+	let { data, form }: { data: PageData; form: ActionData } = $props();
 
 	const formatDate = (date: Date) => {
 		return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
@@ -20,17 +9,18 @@
 </script>
 
 <h1>Blog Posts</h1>
-<form method="post" action="?/create" use:enhance={resetFormOnSuccesfulCreation}>
+<form method="post" action="?/create">
 	<label>
 		Title
-		<input name="title" required />
+		<input name="title" value={form?.title ?? ''} required />
 	</label>
 	<label>
 		Content
-		<textarea name="content" rows="6" required></textarea>
+		<textarea name="content" value={form?.content ?? ''} rows="6" required></textarea>
 	</label>
 	<button>Create Post</button>
 </form>
+<p style="color: red">{form?.message ?? ''}</p>
 
 {#if data.blogPosts.length === 0}
 	<p>No blog posts found.</p>

@@ -32,7 +32,7 @@ export const actions: Actions = {
 		const content = (formData.get('content')?.toString() ?? '').trim();
 
 		if (!title || !content) {
-			return fail(400, { error: 'Title and content are required', title, content });
+			return fail(400, { message: 'Title and content are required', title, content });
 		}
 
 		const slug = makeSlug(title);
@@ -44,9 +44,8 @@ export const actions: Actions = {
 				content,
 				authorId: event.locals.user.id,
 			});
-		} catch (err) {
-			console.error('Failed to insert blog post', err);
-			return fail(500, { error: 'Unable to create post', title, content });
+		} catch (error) {
+			return fail(400, { message: (error as any)?.cause?.detail || 'Unable to create post', title, content });
 		}
 
 		return redirect(303, '/admin');
